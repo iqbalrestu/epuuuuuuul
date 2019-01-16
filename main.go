@@ -5,11 +5,9 @@ import (
 	"net/http"
 	"runtime"
 
-	"github.com/Massad/gin-boilerplate/controllers"
-	"github.com/Massad/gin-boilerplate/db"
-
 	"github.com/gin-gonic/contrib/sessions"
 	"github.com/gin-gonic/gin"
+	"github.com/iqbalrestu/epuuuuuuul/db"
 )
 
 //CORSMiddleware ...
@@ -41,24 +39,11 @@ func main() {
 
 	db.Init()
 
-	v1 := r.Group("/v1")
-	{
-		/*** START USER ***/
-		user := new(controllers.UserController)
+	// v1 := r.Group("/v1")
+	// {
+	// 	/*** START USER ***/
 
-		v1.POST("/user/signin", user.Signin)
-		v1.POST("/user/signup", user.Signup)
-		v1.GET("/user/signout", user.Signout)
-
-		/*** START Article ***/
-		article := new(controllers.ArticleController)
-
-		v1.POST("/article", article.Create)
-		v1.GET("/articles", article.All)
-		v1.GET("/article/:id", article.One)
-		v1.PUT("/article/:id", article.Update)
-		v1.DELETE("/article/:id", article.Delete)
-	}
+	// }
 
 	r.LoadHTMLGlob("./public/html/*")
 
